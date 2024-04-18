@@ -1,0 +1,8 @@
+package.json
+package-lock.json
+.prettierrc
+eslint.config.mjs
+README.md
+tsconfig.json
+vite/
+src/vite-env.d.ts
