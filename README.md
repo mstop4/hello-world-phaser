@@ -4,6 +4,8 @@ This is a Phaser 3 project template that uses Vite for bundling, with Typescript
 
 # Stack
 
+**Requires Node v18.18.0 or higher**
+
 - Phaser 3 - game framework
 - Typescript - language
 - Vite - frontend bundler and tooling
@@ -11,6 +13,13 @@ This is a Phaser 3 project template that uses Vite for bundling, with Typescript
 - Prettier - code formatter
 - lint-staged - script runner on staged files
 - Husky - pre-commit hook script runner
+
+# Getting Started
+
+```
+npm i
+npm run dev
+```
 
 # Available Commands
 
