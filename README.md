@@ -1,6 +1,6 @@
 # Phaser Vite TypeScript Template
 
-This is a Phaser 3 project template that uses Vite for bundling, with Typescript support and a pre-commit hook that automatically lints and formats changes before every commit.
+This is a Phaser 3 project template that uses Vite for bundling, with Typescript support and a simple CI pipline that automatically lints and formats changes before every commit.
 
 # Stack
 
