@@ -31,4 +31,4 @@ npm run dev
 | `npm run lint` | Lints the entire project |
 | `npm run ts-check` | Type-checks .ts files | 
 | `npm run prettier-check` | Checks to see if there are any formatting issues that would be corrected by Prettier |
-| `npm run prepare` | Runs Husky prepare script |
+| `npm run prepare` | Runs Husky prepare script. Should be done automatically when running `npm install` |
