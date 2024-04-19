@@ -1,35 +1,59 @@
-import { Scene } from 'phaser';
+import { Scene, GameObjects } from 'phaser';
+import { HelloWorld } from '../objects/HelloWorld';
+import { ControlKeys } from '../utils/Controls';
 
-export class Game extends Scene
-{
-    camera: Phaser.Cameras.Scene2D.Camera;
-    background: Phaser.GameObjects.Image;
-    msg_text : Phaser.GameObjects.Text;
+export class Game extends Scene {
+  camera: Phaser.Cameras.Scene2D.Camera;
+  background: GameObjects.Image;
+  helloWorld: HelloWorld;
+  controlKeys: ControlKeys;
 
-    constructor ()
-    {
-        super('Game');
+  constructor() {
+    super('Game');
+  }
+
+  create() {
+    this.camera = this.cameras.main;
+    this.camera.setBackgroundColor(0x00ff00);
+
+    this.background = this.add.image(512, 384, 'background');
+    this.background.setAlpha(0.5);
+
+    this.helloWorld = new HelloWorld(this);
+    this.add.existing(this.helloWorld);
+
+    this.addKeys();
+
+    this.input.once('pointerdown', () => {
+      this.scene.start('GameOver');
+    });
+  }
+
+  update() {
+    this.handleKeys();
+  }
+
+  addKeys() {
+    this.controlKeys = {
+      left: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
+      right: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
+      up: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
+      down: this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN),
+    };
+  }
+
+  handleKeys() {
+    if (this.controlKeys.left.isDown) {
+      this.helloWorld.move(-1, 0);
     }
-
-    create ()
-    {
-        this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
-
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
-
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        });
-        this.msg_text.setOrigin(0.5);
-
-        this.input.once('pointerdown', () => {
-
-            this.scene.start('GameOver');
-
-        });
+    if (this.controlKeys.right.isDown) {
+      this.helloWorld.move(1, 0);
     }
+    if (this.controlKeys.up.isDown) {
+      this.helloWorld.move(0, -1);
+    }
+    if (this.controlKeys.down.isDown) {
+      this.helloWorld.move(0, 1);
+    }
+  }
 }
