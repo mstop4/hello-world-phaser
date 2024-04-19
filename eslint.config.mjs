@@ -9,6 +9,6 @@ export default [
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    ignores: ["vite/"]
+    ignores: ["vite/", "dist/"]
   }
 ];
